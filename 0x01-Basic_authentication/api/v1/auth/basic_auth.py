@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for authentication using Basci Auth
+Module for authenticatiion using Basci Auth
 """
 
 from typing import TypeVar
