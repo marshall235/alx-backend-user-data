@@ -7,6 +7,8 @@ from typing import TypeVar
 from api.v1.auth.auth import Auth
 import base64
 
+from models.user import User
+
 
 class BasicAuth(Auth):
     """
@@ -86,11 +88,11 @@ class BasicAuth(Auth):
             for user in users:
                 if user.is_valid_password(user_pwd):
                     return user
-                return None
+            return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         auth_header = self.authorization_header(request)
-        if auth_header is None:
+        if auth_header is not None:
             token = self.extract_base64_authorization_header(auth_header)
             if token is not None:
                 decoded = self.decode_base64_authorization_header(token)
@@ -100,5 +102,4 @@ class BasicAuth(Auth):
                         return self.user_object_from_credentials(
                             email, password)
 
-
-return
+        return
