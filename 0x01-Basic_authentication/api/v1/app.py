@@ -20,7 +20,7 @@ AUTH_TYPE = os.getenv("AUTH_TYPE")
 if AUTH_TYPE == 'auth':
     from api.v1.auth.auth import Auth
     auth = Auth()
-elif auth AUTH_TYPE == 'basic_auth':
+elif AUTH_TYPE == 'basic_auth':
     from api.v1.auth.auth import BasicAuth
     auth = BasicAuth()
 
