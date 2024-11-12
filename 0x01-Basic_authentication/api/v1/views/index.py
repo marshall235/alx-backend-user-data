@@ -5,6 +5,24 @@ from flask import jsonify, abort
 from api.v1.views import app_views
 
 
+# Unauthorized access
+@app_views.route('unauthorized', method=['GET'], strict_slashes = False)
+def unauthorized() -> str:
+    """
+    Unauthorized Access
+    """
+    abort(401, description='unauthorized')
+
+
+# Forbidden
+@app_views.route(/'forbidenn', method=['GET'], strict_slashes = False)
+def forbidden() str:
+    """
+    Forbidden
+    """
+    return abort(403, description='Forbidden')
+
+
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status() -> str:
     """ GET /api/v1/status
