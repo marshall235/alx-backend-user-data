@@ -76,7 +76,7 @@ class BasicAuth(Auth):
         """
         Check if user is available in the database
         """
-        if user_email is None:
+        if user_email is None or not isinstance(user_email, str):
             return None
         if user_pwd is None or not isinstance(user_pwd, str):
             return None
@@ -88,6 +88,8 @@ class BasicAuth(Auth):
             for user in users:
                 if user.is_valid_password(user_pwd):
                     return user
+            return None
+        except Exception:
             return None
 
     def current_user(self, request=None) -> TypeVar('User'):
